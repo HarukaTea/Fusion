@@ -29,7 +29,7 @@ local function ForPairs<KI, KO, VI, VO, S>(
 	scope: Types.Scope<S>,
 	inputTable: Types.UsedAs<{[KI]: VI}>,
 	processor: (Types.Use, Types.Scope<S>, KI, VI) -> (KO, VO),
-	destructor: unknown?
+	destructor: any?
 ): Types.For<KO, VO>
 	if typeof(inputTable) == "function" then
 		External.logError("scopeMissing", nil, "ForPairs", "myScope:ForPairs(inputTable, function(use, scope, key, value) ... end)")

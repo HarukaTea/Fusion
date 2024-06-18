@@ -26,7 +26,7 @@ return {
 		end
 	end,
 	clearAndGive = function(
-		scope: Types.Scope<unknown>
+		scope: Types.Scope<any>
 	)
 		if poolSize < MAX_POOL_SIZE then
 			table.clear(scope)
@@ -34,7 +34,7 @@ return {
 			pool[poolSize] = scope :: any
 		end
 	end,
-	reuseAny = function(): Types.Scope<unknown>
+	reuseAny = function(): Types.Scope<any>
 		if poolSize == 0 then
 			return nil :: any
 		else

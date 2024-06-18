@@ -15,7 +15,7 @@ local defaultProps = require(Package.Instances.defaultProps)
 local applyInstanceProps = require(Package.Instances.applyInstanceProps)
 
 local function New(
-	scope: Types.Scope<unknown>,
+	scope: Types.Scope<any>,
 	className: string
 )
 	if (className :: any) == nil then

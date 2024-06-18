@@ -49,7 +49,7 @@ local Fusion: Types.Fusion = table.freeze {
 	doCleanup = require(script.Memory.doCleanup),
 	innerScope = require(script.Memory.innerScope),
 	scoped = require(script.Memory.scoped),
-	
+
 	-- State
 	Computed = require(script.State.Computed),
 	ForKeys = require(script.State.ForKeys) :: Types.ForKeysConstructor,
@@ -64,7 +64,6 @@ local Fusion: Types.Fusion = table.freeze {
 	AttributeChange = require(script.Instances.AttributeChange),
 	AttributeOut = require(script.Instances.AttributeOut),
 	Children = require(script.Instances.Children),
-	Hydrate = require(script.Instances.Hydrate),
 	New = require(script.Instances.New),
 	OnChange = require(script.Instances.OnChange),
 	OnEvent = require(script.Instances.OnEvent),

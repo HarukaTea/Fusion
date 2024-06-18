@@ -16,12 +16,6 @@ do, and when you come back in six months, your code is easy to pick back up.
 
 Piqued your interest? [Get going in minutes with our on-rails tutorial.](https://elttob.uk/Fusion/latest/tutorials)
 
-## Issues & contributions
-
-Have you read [our contribution guide](/CONTRIBUTING.md)? It's a real page turner!
-
-We highly recommend reading it before opening an issue or pull request.
-
 ## License
 
 Fusion is licensed freely under MIT. Go do cool stuff with it, and if you feel

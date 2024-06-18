@@ -16,8 +16,8 @@ local scopePool = require(Package.Memory.scopePool)
 -- checking behaviour.
 local function deriveScope<T>(
 	existing: Types.Scope<T>,
-	methods: {[unknown]: unknown}?,
-	...: {[unknown]: unknown}
+	methods: {[any]: any}?,
+	...: {[any]: any}
 ): any
 	local metatable = getmetatable(existing)
 	if methods ~= nil then

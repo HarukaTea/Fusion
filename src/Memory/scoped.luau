@@ -13,7 +13,7 @@ local merge = require(Package.Utility.merge)
 local scopePool = require(Package.Memory.scopePool)
 
 local function scoped(
-	...: {[unknown]: unknown}
+	...: {[any]: any}
 ): any
 	return setmetatable(
 		scopePool.reuseAny() :: any or {},

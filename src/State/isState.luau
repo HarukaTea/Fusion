@@ -8,10 +8,10 @@ local task = nil -- Disable usage of Roblox's task scheduler
 ]]
 
 local function isState(
-	target: unknown
+	target: any
 ): boolean
 	if typeof(target) == "table" then
-		local target = target :: {_peek: unknown?}
+		local target = target :: {_peek: any?}
 		return typeof(target._peek) == "function"
 	end
 	return false

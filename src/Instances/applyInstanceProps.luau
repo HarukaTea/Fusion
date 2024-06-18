@@ -29,7 +29,7 @@ local whichLivesLonger = require(Package.Memory.whichLivesLonger)
 local function setProperty_unsafe(
 	instance: Instance,
 	property: string,
-	value: unknown
+	value: any
 )
 	(instance :: any)[property] = value
 end
@@ -44,7 +44,7 @@ end
 local function setProperty(
 	instance: Instance,
 	property: string,
-	value: unknown
+	value: any
 )
 	local success, err = xpcall(setProperty_unsafe :: any, parseError, instance, property, value)
 
@@ -67,13 +67,13 @@ local function setProperty(
 end
 
 local function bindProperty(
-	scope: Types.Scope<unknown>,
+	scope: Types.Scope<any>,
 	instance: Instance,
 	property: string,
-	value: Types.UsedAs<unknown>
+	value: Types.UsedAs<any>
 )
 	if isState(value) then
-		local value = value :: Types.StateObject<unknown>
+		local value = value :: Types.StateObject<any>
 		if value.scope == nil then
 			External.logError("useAfterDestroy", nil, `The {value.kind} object, bound to {property},`, `the {instance.ClassName} instance`)
 		elseif whichLivesLonger(scope, instance, value.scope, value.oldestTask) == "definitely-a" then
@@ -90,15 +90,15 @@ local function bindProperty(
 end
 
 local function applyInstanceProps(
-	scope: Types.Scope<unknown>,
+	scope: Types.Scope<any>,
 	props: Types.PropertyTable,
 	applyTo: Instance
 )
 	local specialKeys = {
-		self = {} :: {[Types.SpecialKey]: unknown},
-		descendants = {} :: {[Types.SpecialKey]: unknown},
-		ancestor = {} :: {[Types.SpecialKey]: unknown},
-		observer = {} :: {[Types.SpecialKey]: unknown}
+		self = {} :: {[Types.SpecialKey]: any},
+		descendants = {} :: {[Types.SpecialKey]: any},
+		ancestor = {} :: {[Types.SpecialKey]: any},
+		observer = {} :: {[Types.SpecialKey]: any}
 	}
 
 	for key, value in pairs(props) do

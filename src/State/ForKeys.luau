@@ -29,7 +29,7 @@ local function ForKeys<KI, KO, V, S>(
 	scope: Types.Scope<S>,
 	inputTable: Types.UsedAs<{[KI]: V}>,
 	processor: (Types.Use, Types.Scope<S>, KI) -> KO,
-	destructor: unknown?
+	destructor: any?
 ): Types.For<KO, V>
 	if typeof(inputTable) == "function" then
 		External.logError("scopeMissing", nil, "ForKeys", "myScope:ForKeys(inputTable, function(use, scope, key) ... end)")

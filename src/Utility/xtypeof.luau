@@ -10,12 +10,12 @@ local task = nil -- Disable usage of Roblox's task scheduler
 ]]
 
 local function xtypeof(
-	x: unknown
+	x: any
 ): string
 	local typeString = typeof(x)
 
 	if typeString == "table" then
-		local x = x :: {type: unknown?}
+		local x = x :: {type: any?}
 		if typeof(x.type) == "string" then
 			return x.type
 		end

@@ -13,12 +13,12 @@ local deriveScope = require(Package.Memory.deriveScope)
 
 local function innerScope<T>(
 	existing: Types.Scope<T>,
-	...: {[unknown]: unknown}
+	...: {[any]: any}
 ): any
 	local new = deriveScope(existing, ...)
 	table.insert(existing, new)
 	table.insert(
-		new, 
+		new,
 		function()
 			local index = table.find(existing, new)
 			if index ~= nil then

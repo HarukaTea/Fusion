@@ -20,18 +20,18 @@ return {
 	stage = "observer",
 	apply = function(
 		self: Types.SpecialKey,
-		scope: Types.Scope<unknown>,
-		value: unknown,
+		scope: Types.Scope<any>,
+		value: any,
 		applyTo: Instance
 	)
 		if not isState(value) then
 			External.logError("invalidRefType")
 		end
-		local value = value :: Types.StateObject<unknown>
+		local value = value :: Types.StateObject<any>
 		if value.kind ~= "Value" then
 			External.logError("invalidRefType")
 		end
-		local value = value :: Types.Value<unknown>
+		local value = value :: Types.Value<any, any>
 
 		if value.scope == nil then
 			External.logError("useAfterDestroy", nil, "The Value object, which [Ref] outputs to,", `the {applyTo} instance`)

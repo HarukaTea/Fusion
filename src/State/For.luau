@@ -33,11 +33,11 @@ local CLASS_METATABLE = { __index = class }
 ]]
 
 function class:update(): boolean
-	local self = self :: InternalTypes.For<unknown, unknown, unknown, unknown, unknown>
+	local self = self :: InternalTypes.For<any, any, any, any, any>
 	if self.scope == nil then
 		return false
 	end
-	local outerScope = self.scope :: Types.Scope<unknown>
+	local outerScope = self.scope :: Types.Scope<any>
 	local existingInputTable = self._existingInputTable
 	local existingOutputTable = self._existingOutputTable
 	local existingProcessors = self._existingProcessors
@@ -53,7 +53,7 @@ function class:update(): boolean
 	table.clear(self.dependencySet)
 
 	if isState(self._inputTable) then
-		local inputTable = self._inputTable :: Types.StateObject<{[unknown]: unknown}> 
+		local inputTable = self._inputTable :: Types.StateObject<{[any]: any}>
 		inputTable.dependentSet[self], self.dependencySet[inputTable] = true, true
 	end
 
@@ -91,7 +91,7 @@ function class:update(): boolean
 					existingProcessors[tryReuseProcessor] = nil
 				end
 			end
-			
+
 		end
 		-- Next, try and reuse processors who match the key of a remaining pair.
 		-- The value will change but the key will stay stable.
@@ -146,7 +146,7 @@ function class:update(): boolean
 			doCleanup(unusedProcessor.scope)
 			scopePool.clearAndGive(unusedProcessor.scope :: any)
 		end
-		
+
 		for key, remainingValues in remainingPairs do
 			for value in remainingValues do
 				local innerScope = deriveScope(outerScope)
@@ -199,7 +199,7 @@ end
 --[[
 	Returns the interior value of this state object.
 ]]
-function class:_peek(): unknown
+function class:_peek(): any
 	return self._existingOutputTable
 end
 

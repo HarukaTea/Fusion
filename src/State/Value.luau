@@ -31,10 +31,10 @@ local CLASS_METATABLE = {__index = class}
 	unnecessary updates.
 ]]
 function class:set(
-	newValue: unknown,
+	newValue: any,
 	force: boolean?
 )
-	local self = self :: InternalTypes.Value<unknown, unknown>
+	local self = self :: InternalTypes.Value<any, any>
 	local oldValue = self._value
 	if force or not isSimilar(oldValue, newValue) then
 		self._value = newValue
@@ -45,8 +45,8 @@ end
 --[[
 	Returns the interior value of this state object.
 ]]
-function class:_peek(): unknown
-	local self = self :: InternalTypes.Value<unknown, unknown>
+function class:_peek(): any
+	local self = self :: InternalTypes.Value<any, any>
 	return self._value
 end
 
@@ -55,7 +55,7 @@ function class:get()
 end
 
 local function Value<T>(
-	scope: Types.Scope<unknown>,
+	scope: Types.Scope<any>,
 	initialValue: T
 ): Types.Value<T, any>
 	if initialValue == nil and (typeof(scope) ~= "table" or (scope[1] == nil and next(scope) ~= nil)) then

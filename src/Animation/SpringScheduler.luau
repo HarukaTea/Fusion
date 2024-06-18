@@ -14,16 +14,16 @@ local packType = require(Package.Animation.packType)
 local springCoefficients = require(Package.Animation.springCoefficients)
 local updateAll = require(Package.State.updateAll)
 
-type Set<T> = {[T]: unknown}
+type Set<T> = {[T]: any}
 
 local SpringScheduler = {}
 
 local EPSILON = 0.0001
-local activeSprings: Set<InternalTypes.Spring<unknown>> = {}
+local activeSprings: Set<InternalTypes.Spring<any>> = {}
 local lastUpdateTime = External.lastUpdateStep()
 
 function SpringScheduler.add(
-	spring: InternalTypes.Spring<unknown>
+	spring: InternalTypes.Spring<any>
 )
 	-- we don't necessarily want to use the most accurate time - here we snap to
 	-- the last update time so that springs started within the same frame have
@@ -40,7 +40,7 @@ function SpringScheduler.add(
 end
 
 function SpringScheduler.remove(
-	spring: InternalTypes.Spring<unknown>
+	spring: InternalTypes.Spring<any>
 )
 	activeSprings[spring] = nil
 end
@@ -48,7 +48,7 @@ end
 local function updateAllSprings(
 	now: number
 )
-	local springsToSleep: Set<InternalTypes.Spring<unknown>> = {}
+	local springsToSleep: Set<InternalTypes.Spring<any>> = {}
 	lastUpdateTime = now
 
 	for spring in pairs(activeSprings) do

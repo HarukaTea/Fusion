@@ -70,8 +70,8 @@ end
 function External.logError(
 	messageID: string,
 	errObj: Types.Error?,
-	...: unknown
-): never
+	...: any
+): any
 	error(formatError(currentProvider, messageID, errObj, ...), 0)
 end
 
@@ -81,7 +81,7 @@ end
 function External.logErrorNonFatal(
 	messageID: string,
 	errObj: Types.Error?,
-	...: unknown
+	...: any
 ): ()
 	local errorString = formatError(currentProvider, messageID, errObj, ...)
 	if currentProvider ~= nil then
@@ -96,7 +96,7 @@ end
 ]]
 function External.logWarn(
 	messageID: string,
-	...: unknown
+	...: any
 ): ()
 	local errorString = formatError(currentProvider, messageID, debug.traceback(nil, 2), ...)
 	if currentProvider ~= nil then
@@ -111,7 +111,7 @@ end
 	Returns a function that can be used to disconnect later.
 
 	Callbacks are given the current number of seconds since an arbitrary epoch.
-	
+
 	TODO: This epoch may change between providers. We could investigate ways
 	of allowing providers to co-operate to keep the epoch the same, so that
 	monotonicity can be better preserved.
