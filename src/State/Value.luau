@@ -16,7 +16,7 @@ local External = require(Package.External)
 local change = require(Package.Graph.change)
 -- Utility
 local isSimilar = require(Package.Utility.isSimilar)
-local any = require(Package.Utility.any)
+local never = require(Package.Utility.never)
 local nicknames = require(Package.Utility.nicknames)
 
 type Self<T, S> = Types.Value<T, S>
@@ -59,7 +59,7 @@ function class:get<T, S>(
 	_self: Self<T, S>
 ): any
 	External.logError("stateGetWasRemoved")
-	return any()
+	return never()
 end
 
 function class.set<T, S>(

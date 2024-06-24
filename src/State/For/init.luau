@@ -17,7 +17,7 @@ local peek = require(Package.State.peek)
 local castToState = require(Package.State.castToState)
 local ForTypes = require(Package.State.For.ForTypes)
 -- Utility
-local any = require(Package.Utility.any)
+local never = require(Package.Utility.never)
 local nicknames = require(Package.Utility.nicknames)
 
 local Disassembly = require(Package.State.For.Disassembly)
@@ -72,7 +72,7 @@ function class.get<S, KI, KO, VI, VO>(
 	_self
 ): any
 	External.logError("stateGetWasRemoved")
-	return any()
+	return never()
 end
 
 function class._evaluate<S, KI, KO, VI, VO>(

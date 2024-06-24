@@ -7,8 +7,8 @@ local task = nil -- Disable usage of Roblox's task scheduler
 	Never returns.
 ]]
 
-local function any(): any
+local function never(): any
 	error("This codepath should not be reachable")
 end
 
-return any
+return never

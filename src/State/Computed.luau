@@ -17,7 +17,7 @@ local External = require(Package.External)
 local parseError = require(Package.Logging.parseError)
 -- Utility
 local isSimilar = require(Package.Utility.isSimilar)
-local any = require(Package.Utility.any)
+local never = require(Package.Utility.never)
 -- Graph
 local depend = require(Package.Graph.depend)
 -- State
@@ -85,7 +85,7 @@ function class.get<T, S>(
 	_self: Self<T, S>
 ): any
 	External.logError("stateGetWasRemoved")
-	return any()
+	return never()
 end
 
 function class._evaluate<T, S>(
